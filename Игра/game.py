@@ -12,8 +12,7 @@ ball = pygame.image.load('ball.png')
 rock = pygame.image.load('rock.png')
 GameOver = pygame.image.load('GameOver.jpg')
 fone = pygame.image.load('fone.jpg')
-music_1 = pygame.mixer.Sound("music_1.wav")
-music_2 = pygame.mixer.Sound("music_2.wav")
+music = pygame.mixer.Sound("music_2.wav")
 
 RUN = True
 x = 250
@@ -24,23 +23,12 @@ count = 1
 rock_x, rock_x2 = random.randint(0, 386), random.randint(0, 386)
 fone_y = -500
 ball_y = 250
+music.play()
 while RUN:
     pygame.time.delay(75)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             RUN = False
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            if event.button == 1:
-                music_1.stop()
-                music_2.stop()
-                music_1.play()
-            elif event.button == 3:  # Music
-                music_2.stop()
-                music_1.stop()
-                music_2.play()
-            elif event.button == 2:
-                music_1.stop()
-                music_2.stop()
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT]:
